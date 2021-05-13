@@ -1,6 +1,6 @@
 # AsBrowser
 
-Use as a browser.
+Use vscode as a browser.
 
 It’s not like [Browser Preview](https://marketplace.visualstudio.com/items?itemName=auchenberg.vscode-browser-preview) starts another headless browser, this extension using vscode's `webview` widget, cause less resources usage.
 
