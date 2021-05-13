@@ -1,0 +1,42 @@
+{
+  "name": "asbrowser",
+  "displayName": "AsBrowser",
+  "description": "Use as a browser.",
+  "version": "0.0.1",
+  "homepage": "https://marketplace.visualstudio.com/items?itemName=kkocdko.asbrowser",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kkocdko/vscode-asbrowser.git"
+  },
+  "publisher": "kkocdko",
+  "author": "kkocdko",
+  "engines": {
+    "vscode": "^1.56.0"
+  },
+  "keywords": [
+    "Browser",
+    "Preview",
+    "Open Web Page"
+  ],
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:asbrowser.open",
+    "onWebviewPanel:asbrowser.webview"
+  ],
+  "icon": "icon.png",
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "asbrowser.open",
+        "title": "Open AsBrowser"
+      }
+    ]
+  },
+  "scripts": {
+    "watch": "",
+    "pak": "vsce package"
+  }
+}
