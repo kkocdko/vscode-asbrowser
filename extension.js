@@ -1,7 +1,6 @@
 "use strict";
 
-const path = require("path");
-const fs = require("fs");
+// https://github.com/microsoft/vscode/issues/130367
 const vscode = require("vscode");
 
 /** @param {vscode.ExtensionContext} context */
@@ -16,9 +15,7 @@ exports.activate = (context) => {
         retainContextWhenHidden: true,
       }
     );
-    panel.webview.html = fs
-      .readFileSync(path.join(__dirname, "webview.html"))
-      .toString();
+    panel.webview.html = `/*{webview.html}*/`;
   });
   context.subscriptions.push(command);
 };

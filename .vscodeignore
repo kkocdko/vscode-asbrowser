@@ -1,5 +1,8 @@
-/node_modules
-/.vscode
+node_modules
+.vscode
 *.vsix
 *.code-workspace
 .gitignore
+extension.js
+build.js
+webview.html

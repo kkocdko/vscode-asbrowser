@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 
 <head>
-  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width" />
 </head>
 
@@ -11,79 +10,49 @@
     flex-direction: column;
     height: 100vh;
     padding: 0;
-    margin: 0;
     overflow: hidden;
-    /* background: #000; */
   }
-
   header {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    height: 33px;
-    margin: -1px -1px 0;
-    border: 1px solid #7777;
-    transition: 0.3s;
+    z-index: 3;
+    display: grid;
+    grid: 35px / auto 15px;
   }
-
   header.folded {
-    margin-bottom: -34px;
+    padding-left: 5px;
+    margin-bottom: -35px;
+    margin-left: calc(100% - 15px);
   }
-
-  header.folded:not(:hover) {
-    opacity: 0.7;
-    transform: translateX(calc(100% - 15px));
-  }
-
-  .fold-btn {
-    width: 15px;
-  }
-
-  .fold-btn:hover {
-    background: #7777;
-  }
-
   input {
-    flex-grow: 1;
-    padding: 0 15px;
-    font-size: 14px;
-    color: #0009;
+    padding-left: 10px;
+    color: var(--vscode-input-foreground);
     background: none;
     border: none;
     outline: none !important;
   }
-
-  body:not(.vscode-light) input {
-    color: #fff9;
-  }
-
   iframe {
-    flex-grow: 1;
+    flex: 1;
     border: none;
-    transition: 0.3s;
-  }
-
-  header.folded:hover + iframe {
-    transform: translateY(34px);
   }
 </style>
 
 <body>
   <header>
-    <input id="input" placeholder="TYPE URL HERE" />
-    <div class="fold-btn" onclick="parentNode.classList.toggle('folded')"></div>
+    <input
+      id="$input"
+      placeholder="Type a URL"
+      onclick="parentNode.classList.remove('folded')"
+    />
+    <div onclick="parentNode.classList.toggle('folded')"></div>
   </header>
-  <iframe id="iframe"></iframe>
+  <iframe id="$iframe"></iframe>
 </body>
 
 <script>
-  "use strict";
-
-  input.onkeypress = ({ key }) => {
+  $input.onkeypress = ({ key }) => {
     if (key !== "Enter") return;
-    let url = input.value.trim();
-    if (url.search(/^(http|https|file):/) === -1)
-      url = (location.protocol === "https:" ? "https:" : "http:") + url;
-    iframe.src = new URL(url).href;
+    let url = $input.value.trim();
+    if (!/^(http|https|file):/.test(url))
+      url = (location.protocol === "https:" ? "https://" : "http://") + url;
+    $iframe.src = new URL(url).href;
   };
 </script>

@@ -2,3 +2,4 @@
 /.vscode
 *.vsix
 *.code-workspace
+dist.js
